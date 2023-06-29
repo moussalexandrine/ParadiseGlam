@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shopping Cart UI</title>
+	<link rel="stylesheet" type="text/css" href="./style.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,900" rel="stylesheet">
+</head>
+<body>
+
+    
+     
+
+   <div class="form-container">
+	<h2>Booking Form</h2>
+	<form method="post" action="https://formsubmit.co/moussalexandrine@gmail.com">
+		<label for="name">Name:</label>
+		<input type="text" name="name" id="name" required>
+
+		<label for="email">Email Address:</label>
+		<input type="email" name="email" id="email" required>
+
+		<label for="phone">Phone Number:</label>
+		<input type="tel" name="phone" id="phone" required>
+
+		<label for="city">City:</label>
+		<input type="text" name="city" id="city">
+
+		<label for="state">State:</label>
+		<input type="text" name="state" id="state">
+
+		<label for="zip">Zip Code:</label>
+		<input type="text" name="zip" id="zip">
+
+		<label for="bookingDate">Booking Date:</label>
+		<input type="date" name="bookingDate" id="bookingDate">
+
+		<label for="bookingTime">Booking Time:</label>
+		<select name="bookingTime" id="bookingTime">
+			<option value="09:00">09:00</option>
+			<option value="12:00">12:00</option>
+			<option value="15:00">15:00</option>
+			<option value="18:00">18:00</option>
+		</select>
+
+		<label for="message">Your Message:</label>
+		<textarea name="message" id="message" rows="5" cols="40"></textarea>
+
+	
+
+		
+
+		<div class="buttons">
+			<input type="submit" value="Submit">
+			<input type="reset" value="Clear Form">
+		</div>
+	</form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <div class="CartContainer">
+   	   <div class="Header">
+   	   	<h3 class="Heading">Shopping Cart</h3>
+   	   	<h5 class="Action">Remove all</h5>
+   	   </div>
+
+   	   <div class="Cart-Items">
+   	   	  <div class="image-box">
+   	   	  	<img src="images/WhiteAndGoldChafingDish.jpg" style={{ height="120px"}} />
+   	   	  </div>
+   	   	  <div class="about">
+   	   	  	<h1 class="title">Apple Juice</h1>
+   	   	  	<h3 class="subtitle">250ml</h3>
+   	   	  	<img src="images/veg.png" style={{ height="30px" }}/>
+   	   	  </div>
+   	   	  <div class="counter">
+   	   	  	<div class="btn">+</div>
+   	   	  	<div class="count">2</div>
+   	   	  	<div class="btn">-</div>
+   	   	  </div>
+   	   	  <div class="prices">
+   	   	  	<div class="amount">$2.99</div>
+   	   	  	<div class="save"><u>Save for later</u></div>
+   	   	  	<div class="remove"><u>Remove</u></div>
+   	   	  </div>
+   	   </div>
+
+   	   <div class="Cart-Items pad">
+   	   	  <div class="image-box">
+   	   	  	<img src="images/PinkFlowerSpandexBackdrop.jpg" style={{ height="120px" }} />
+   	   	  </div>
+   	   	  <div class="about">
+   	   	  	<h1 class="title">Grapes Juice</h1>
+   	   	  	<h3 class="subtitle">250ml</h3>
+   	   	  	<img src="images/veg.png" style={{ height="30px" }}/>
+   	   	  </div>
+   	   	  <div class="counter">
+   	   	  	<div class="btn">+</div>
+   	   	  	<div class="count">1</div>
+   	   	  	<div class="btn">-</div>
+   	   	  </div>
+   	   	  <div class="prices">
+   	   	  	<div class="amount">$25</div>
+   	   	  	<div class="save"><u>Save for later</u></div>
+   	   	  	<div class="remove"><u>Remove</u></div>
+   	   	  </div>
+   	   </div>
+   	 <hr> 
+   	 <div class="checkout">
+   	 <div class="total">
+   	 	<div>
+   	 		<div class="Subtotal">Sub-Total</div>
+   	 		<div class="items">2 items</div>
+   	 	</div>
+   	 	<div class="total-amount">$15</div>
+   	 </div>
+   	 <button class="button">Checkout</button></div>
+   </div>
+
+
+
+
+</body>
+
+</html>

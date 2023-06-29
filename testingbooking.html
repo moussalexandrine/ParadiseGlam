@@ -1,0 +1,104 @@
+<script>
+  function clearForm() {
+      document.getElementById("bookingForm").reset();
+  }
+
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  const quantities = document.querySelectorAll('input[name^="quantity"]');
+  const totalCost = document.getElementById("totalCost");
+  const tableBody = document.querySelector("#selectedItemsTable tbody");
+  const summaryTable = document.querySelector("#summaryTable tbody");
+  const grandTotal = document.getElementById("grandTotal");
+
+  checkboxes.forEach(checkbox => {
+      checkbox.addEventListener("change", updateSelectedItems);
+  });
+
+  quantities.forEach(quantityInput => {
+      quantityInput.addEventListener("input", calculateTotalCost);
+  });
+
+  function updateSelectedItems() {
+      const checkbox = this;
+      const quantityInput = checkbox.parentElement.querySelector('input[name^="quantity"]');
+      const itemName = checkbox.nextElementSibling.nextElementSibling.textContent;
+      const itemImageSrc = checkbox.previousElementSibling.getAttribute("src");
+      const price = parseInt(itemName.match(/\$\d+/)[0].substring(1));
+      const quantity = parseInt(quantityInput.value);
+      const itemTotalPrice = price * quantity;
+
+      if (checkbox.checked && quantity > 0) {
+          const newRow = document.createElement('tr');
+
+          newRow.innerHTML = `
+              <td>${itemName}</td>
+              <td><img src="${itemImageSrc}" alt="${itemName}" width="50" height="50"></td>
+              <td>$${price}</td>
+              <td>${quantity}</td>
+              <td>$${itemTotalPrice}</td>
+          `;
+
+          tableBody.appendChild(newRow);
+      } else {
+          const rows = tableBody.getElementsByTagName('tr');
+
+          for (let i = 0; i < rows.length; i++) {
+              const row = rows[i];
+              const nameCell = row.cells[0];
+
+              if (nameCell.textContent === itemName) {
+                  row.remove();
+                  break;
+              }
+          }
+      }
+
+      calculateTotalCost();
+      updateSummary();
+  }
+
+  function calculateTotalCost() {
+      let totalPrice = 0;
+
+      quantities.forEach(quantityInput => {
+          const checkbox = quantityInput.parentElement.querySelector('input[type="checkbox"]');
+          const itemName = checkbox.nextElementSibling.nextElementSibling.textContent;
+          const price = parseInt(itemName.match(/\$\d+/)[0].substring(1));
+          const quantity = parseInt(quantityInput.value);
+          const itemTotalPrice = price * quantity;
+
+          totalPrice += itemTotalPrice;
+      });
+
+      totalCost.textContent = "$" + totalPrice;
+  }
+
+  function updateSummary() {
+      summaryTable.innerHTML = "";
+      let grandTotalPrice = 0;
+
+      const rows = tableBody.getElementsByTagName('tr');
+      for (let i = 0; i < rows.length; i++) {
+          const row = rows[i];
+          const itemName = row.cells[0].textContent;
+          const itemImageSrc = row.cells[1].querySelector('img').getAttribute('src');
+          const price = parseInt(row.cells[2].textContent.substring(1));
+          const quantity = parseInt(row.cells[3].textContent);
+          const itemTotalPrice = price * quantity;
+          grandTotalPrice += itemTotalPrice;
+
+          const newRow = document.createElement('tr');
+          newRow.innerHTML = `
+              <td>${itemName}</td>
+              <td><img src="${itemImageSrc}" alt="${itemName}" width="50" height="50"></td>
+              <td>$${price}</td>
+              <td>${quantity}</td>
+              <td>$${itemTotalPrice}</td>
+          `;
+
+          summaryTable.appendChild(newRow);
+      }
+
+      grandTotal.textContent = "$" + grandTotalPrice;
+  }
+</script>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart UI</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,900" rel="stylesheet">
+    
+    <style>
+            th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .quantity-input {
+        display: flex;
+        align-items: center;
+    }
+
+    .quantity-input button {
+        margin: 0 5px;
+        padding: 3px 8px;
+    }
+
+    .date-input {
+        display: flex;
+        align-items: center;
+    }
+
+    .date-input input {
+        margin-right: 5px;
+    }
+
+    .form-container {
+        margin-top: 120px;
+        width: 80%;
+        margin-bottom: 20px; /* Add margin-bottom property to create space between containers */
+    }
+
+    .form-container input,
+    .form-container textarea {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .button {
+        margin-top: 10px;
+    }
+
+    .cart-container {
+        margin-bottom: 20px;
+    }
+</style>
+
+
+
+
+
+</head>
+<body>
+	<div class="CartContainer">
+		<div class="Header">
+			<h3 class="Heading">Shopping Cart</h3>
+		</div>
+
+
+
+    <table>
+      <thead>
+        <tr>
+          <th>Item Name</th>
+          <th>Item Image</th>
+          <th>Quantity</th>
+          <th>Date</th>
+          <th>Time Slot</th>
+          <th>Price</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+        <tbody>
+          <tr>
+            <td>Chafing Dish</td>
+            <td><img src="images/WhiteAndGoldChafingDish.jpg" style="height: 120px;" /></td>
+            <td>
+              <input type="number" class="quantity" min="0" value="2">
+            </td>
+            <td class="date-input">
+              <input type="date" value="2023-06-22" />
+            </td>
+            <td>
+              <input type="text" class="time-slot">
+            </td>
+            <td>$50</td>
+            <td class="subtotal">$100</td>
+          </tr>
+          <tr>
+            <td>Pink Backdrop</td>
+            <td><img src="images/PinkFlowerSpandexBackdrop.jpg" style="height: 120px;" /></td>
+            <td>
+              <input type="number" class="quantity" min="0" value="1">
+            </td>
+            <td class="date-input">
+              <input type="date" value="2023-06-22" />
+            </td>
+            <td>
+              <input type="text" class="time-slot">
+            </td>
+            <td>$35</td>
+            <td class="subtotal">$35</td>
+          </tr>
+          <tr>
+            <td>Chaivari Chair</td>
+            <td><img src="images/pic21.jpg" style="height: 120px;" /></td>
+            <td>
+              <input type="number" class="quantity" min="0" value="1">
+            </td>
+            <td class="date-input">
+              <input type="date" value="2023-06-22" />
+            </td>
+            <td>
+              <input type="text" class="time-slot">
+            </td>
+            <td>$6</td>
+            <td class="subtotal">$6</td>
+          </tr>
+          <tr>
+            <td>Ghost Chair</td>
+            <td><img src="images/pic23.jpg" style="height: 120px;" /></td>
+            <td>
+              <input type="number" class="quantity" min="0" value="1">
+            </td>
+            <td class="date-input">
+              <input type="date" value="2023-06-22" />
+            </td>
+            <td>
+              <input type="text" class="time-slot">
+            </td>
+            <td>$6</td>
+            <td class="subtotal">$6</td>
+          </tr>
+          <tr>
+            <td>8ft Table</td>
+            <td><img src="images/picW.jpg" style="height: 120px;" /></td>
+            <td>
+              <input type="number" class="quantity" min="0" value="1">
+            </td>
+            <td class="date-input">
+              <input type="date" value="2023-06-22" />
+            </td>
+            <td>
+              <input type="text" class="time-slot">
+            </td>
+            <td>$6</td>
+            <td class="subtotal">$10</td>
+          </tr>
+
+
+
+
+        </tbody>
+      </table>
+  
+      <hr>
+  
+      <div class="checkout">
+        <div class="total">
+          <div>
+            <div class="Subtotal">Sub-Total</div>
+            <div class="items">5 items</div>
+          </div>
+          <div class="total-amount">$185</div>
+        </div>
+      </div>
+  
+      <div class="form-container">
+        <h3>Customer Information</h3>
+        <form id="order-form">
+          <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div>
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+            <div>
+              <label for="phone">Phone Number:</label>
+              <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div>
+              <label for="city">City:</label>
+              <input type="text" id="city" name="city" required>
+            </div>
+            <div>
+              <label for="state">State:</label>
+              <input type="text" id="state" name="state" required>
+            </div>
+            <div>
+              <label for="message">Your Message:</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+  
+      <script>
+        // Add event listeners to the quantity inputs
+        const quantityInputs = document.querySelectorAll('.quantity');
+        quantityInputs.forEach(input => {
+          input.addEventListener('input', handleQuantityInputChange);
+        });
+  
+        function handleQuantityInputChange(event) {
+          updateSubtotal(event.target.parentNode.parentNode);
+          updateTotal();
+        }
+  
+        function updateSubtotal(itemRow) {
+          const quantityInput = itemRow.querySelector('.quantity');
+          const priceElement = itemRow.querySelector('.subtotal');
+          const price = parseFloat(itemRow.querySelector('td:nth-child(6)').textContent.substring(1));
+          const quantity = parseInt(quantityInput.value);
+          const subtotal = price * quantity;
+          priceElement.textContent = '$' + subtotal.toFixed(2);
+        }
+  
+        function updateTotal() {
+          const subtotalElements = document.querySelectorAll('.subtotal');
+          let total = 0;
+  
+          subtotalElements.forEach(subtotalElement => {
+            total += parseFloat(subtotalElement.textContent.substring(1));
+          });
+  
+          document.querySelector('.total-amount').textContent = '$' + total.toFixed(2);
+        }
+  
+        // Form submission
+        const form = document.getElementById('order-form');
+        form.addEventListener('submit', handleFormSubmit);
+  
+        function handleFormSubmit(event) {
+          event.preventDefault();
+  
+          const name = document.getElementById('name').value;
+          const email = document.getElementById('email').value;
+          const phone = document.getElementById('phone').value;
+          const city = document.getElementById('city').value;
+          const state = document.getElementById('state').value;
+          const message = document.getElementById('message').value;
+  
+          // Send form data via email (implementation required)
+          sendEmail(name, email, phone, city, state, message);
+  
+          // Reset form fields
+          form.reset();
+  
+          // Optional: Show success message to the user
+          alert('Order submitted successfully!');
+        }
+  
+        function sendEmail(name, email, phone, city, state, message) {
+          // Implement email sending functionality here
+          // You can use a server-side language like Node.js, PHP, or a third-party service like SendGrid or Mailgun
+        }
+      </script>
+    </body>
+    </html>
+  

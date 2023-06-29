@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="CodeHim">
+  <title>Cart Items</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/5.0.2/css/foundation.css">
+  <link rel="stylesheet" href="asset/css/style.css">
+  <link rel="stylesheet" href="asset/css/demo.css">
+</head>
+
+<body class="is-preload">
+  <!-- Wrapper -->
+  <div id="wrapper">
+    <!-- Main -->
+    <div id="main">
+      <div class="inner">
+        <!-- Header -->
+        <header id="header">
+          <ul class="icons">
+            <li>
+              <h1><a href="index.html" class="icon brands fa-facebook-f"><span class="label">Go Back To The Homepage</span></a></h1>
+            </li>
+          </ul>
+        </header>
+
+        <main>
+          <div class="row">
+            <div class="medium-12 columns">
+              <h1>Cart Items</h1>
+              <div id="cartItems">
+                <!-- Cart items will be dynamically inserted here -->
+              </div>
+              <p>Total price: <strong id="totalPrice">0 $</strong></p>
+            </div>
+          </div>
+        </main>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+        <script>
+          $(document).ready(function() {
+            var cartItems = [];
+
+            // Retrieve cart items from localStorage (assuming they were added on another page)
+            var storedCartItems = localStorage.getItem("cartItems");
+            if (storedCartItems) {
+              cartItems = JSON.parse(storedCartItems);
+              updateCart();
+            }
+
+            // Update the cart UI
+            function updateCart() {
+              var cartHTML = "";
+              var totalPrice = 0;
+
+              // Generate HTML for each cart item
+              cartItems.forEach(function(item) {
+                var itemTotal = item.price * item.count;
+                totalPrice += itemTotal;
+
+                cartHTML += '<div class="panel">';
+                cartHTML += '<h3>' + item.name + '</h3>';
+                cartHTML += '<span class="label">' + item.count + ' piece';
+                if (item.count > 1) {
+                  cartHTML += 's';
+                }
+                cartHTML += ' for ' + itemTotal + '$</span>';
+                cartHTML += '</div>';
+              });
+
+              // Update the cartItems container and total price
+              $("#cartItems").html(cartHTML);
+              $("#totalPrice").text(totalPrice.toFixed(2) + " $");
+            }
+
+            // Clear the cart
+            $("#clear").click(function() {
+              cartItems = [];
+              localStorage.removeItem("cartItems");
+              updateCart();
+            });
+
+            updateCart(); // Update cart on page load
+          });
+        </script>
+
+        <!-- Footer -->
+        <footer id="footer">
+          <p class="copyright">
+            &copy; Untitled. All rights reserved. Demo Images: All credits given to the original images creators!!!
+          </p>
+        </footer>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

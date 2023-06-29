@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Scrolling Background Images with Text Overlay</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    
+    .background-images {
+      position: relative;
+      width: 300%; /* Adjust the width based on the number of images */
+      height: 100vh;
+      white-space: nowrap;
+      animation: scroll 30s linear infinite;
+    }
+    
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-200%); /* Adjust the value based on the number of images */
+      }
+    }
+    
+    .background-image {
+      display: inline-block;
+      width: 33.333%; /* Adjust the width based on the number of images */
+      height: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+    }
+    
+    .overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #fff;
+    }
+    
+    .overlay h1 {
+      font-size: 36px;
+      margin: 0;
+      padding: 10px;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+    
+    .overlay p {
+      font-size: 18px;
+      margin: 0;
+      padding: 5px;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+    
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      text-align: center;
+      line-height: 40px;
+      cursor: pointer;
+    }
+    
+    .arrow.left {
+      left: 10px;
+    }
+    
+    .arrow.right {
+      right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="background-images">
+    <div class="background-image" style="background-image: url('images/GoldAndBlackSpandexBackdrop.jpg');">
+      <div class="overlay">
+        <h1>Image 1</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </div>
+    
+    <div class="background-image" style="background-image: url('images/pic00.jpg');">
+      <div class="overlay">
+        <h1>Image 2</h1>
+        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+    </div>
+    
+    <div class="background-image" style="background-image: url('images/WhiteAndGoldChafingDish.jpg');">
+      <div class="overlay">
+        <h1>Image 3</h1>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="arrow left">&lt;</div>
+  <div class="arrow right">&gt;</div>
+
+  <script>
+	const container = document.querySelector('.background-images');
+	const leftArrow = document.querySelector('.arrow.left');
+	const rightArrow = document.querySelector('.arrow.right');
+	const imageCount = document.querySelectorAll('.background-image').length;
+	let currentImageIndex = 0;
+  
+	function scrollLeft() {
+	  currentImageIndex = (currentImageIndex - 1 + imageCount) % imageCount;
+	  container.style.transform = `translateX(-${currentImageIndex * 33.333}%)`; // Adjust the value based on the number of images
+	}
+  
+	function scrollRight() {
+	  currentImageIndex = (currentImageIndex + 1) % imageCount;
+	  container.style.transform = `translateX(-${currentImageIndex * 33.333}%)`; // Adjust the value based on the number of images
+	}
+  
+	leftArrow.addEventListener('click', scrollLeft);
+	rightArrow.addEventListener('click', scrollRight);
+  </script>
+  
+</body>
+</html>

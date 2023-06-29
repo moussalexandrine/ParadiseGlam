@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Form</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200vh; /* Use viewport height for full-screen display */
+            font-family: Arial, sans-serif;
+        }
+
+        .form-container {
+            width: 90%; /* Adjust the width as needed */
+            padding: 20px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+        }
+
+        .form-container h2 {
+            text-align: center;
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="email"],
+        .form-container input[type="tel"],
+        .form-container textarea,
+        .form-container select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        .form-container img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .form-container .item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .form-container .buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .form-container .buttons input[type="submit"],
+        .form-container .buttons input[type="reset"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4CAF50;
+            color: #fff;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .form-container .buttons input[type="reset"] {
+            background-color: #f44336;
+        }
+        
+        .form-container .checklist-container {
+            display: flex;
+            flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .form-container .checklist-container .item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .form-container .checklist-container input[type="checkbox"],
+        .form-container .checklist-container input[type="number"] {
+            margin-right: 5px;
+        }
+        
+        .form-container .checklist-left,
+        .form-container .checklist-right {
+            width: 100%; /* Use full width on smaller screens */
+        }
+        
+        .form-container .checklist-left span,
+        .form-container .checklist-right span {
+            margin-left: auto;
+        }
+        
+        .form-container .checklist-left input[type="number"],
+        .form-container .checklist-right input[type="number"] {
+            width: 60px;
+            padding: 4px;
+            text-align: center;
+        }
+
+        .form-container .quantity-label {
+            margin-right: 5px;
+        }
+
+        .form-container .total-cost {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        
+        .form-container .total-cost label {
+            margin-right: 5px;
+        }
+
+        .form-container table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .form-container table th,
+        .form-container table td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .form-container table th {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Booking Form</h2>
+        <form id="bookingForm" method="post" action="https://formsubmit.co/moussalexandrine@gmail.com">
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" name="email" id="email" Optional>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" name="phone" id="phone" Optional>
+
+            <label for="city">City:</label>
+            <input type="text" name="city" id="city">
+
+            <label for="state">State:</label>
+            <input type="text" name="state" id="state">
+
+            <label for="zip">Zip Code:</label>
+            <input type="text" name="zip" id="zip">
+
+            <label for="bookingDate">Booking Date:</label>
+            <input type="date" name="bookingDate" id="bookingDate">
+
+            <label for="bookingTime">Booking Time:</label>
+            <select name="bookingTime" id="bookingTime">
+                <option value="09:00">09:00</option>
+                <option value="12:00">12:00</option>
+                <option value="15:00">15:00</option>
+                <option value="18:00">18:00</option>
+            </select>
+
+            <label for="message">Your Message:</label>
+            <textarea name="message" id="message" rows="5" cols="40"></textarea>
+
+            <label for="interests">Items I am interested in:</label>
+            <div class="checklist-container">
+                <div class="checklist-left">
+                    <div class="item">
+                        <input type="checkbox" name="interests[]" value="item1">
+                        <img src="images/picL.jpg" alt="Item 1" />
+                        <label for="item1">Item 1 Price: $10</label>
+                        <span></span>
+                        <label class="quantity-label" for="quantity1">Quantity:</label>
+                        <input type="number" name="quantity[]" id="quantity1" value="0" min="0">
+                    </div>
+                    <div class="item">
+                        <input type="checkbox" name="interests[]" value="item2">
+                        <img src="images/GoldSpandexbackdrop.jpg" alt="Item 2" />
+                        <label for="item2">Item 3 Price: $20</label>
+                        <span></span>
+                        <label class="quantity-label" for="quantity2">Quantity:</label>
+                        <input type="number" name="quantity[]" id="quantity2" value="0" min="0">
+                    </div>
+                    <!-- Add more items on the left side here -->
+                </div>
+                
+                <div class="checklist-right">
+                    <div class="item">
+                        <input type="checkbox" name="interests[]" value="item3">
+                        <img src="images/picJ.jpg" alt="Item 3" />
+                        <label for="item3">Item 1 Price: $50</label>
+                        <span></span>
+                        <label class="quantity-label" for="quantity3">Quantity:</label>
+                        <input type="number" name="quantity[]" id="quantity3" value="0" min="0">
+                    </div>
+                    <div class="item">
+                        <input type="checkbox" name="interests[]" value="item4">
+                        <img src="images/GreenAndWhiback.jpg" alt="Item 4" />
+                        <label for="item4">Item 4 Price: $300</label>
+                        <span></span>
+                        <label class="quantity-label" for="quantity4">Quantity:</label>
+                        <input type="number" name="quantity[]" id="quantity4" value="0" min="0">
+                    </div>
+                    <!-- Add more items on the right side here -->
+                </div>
+            </div>
+            
+            <div class="buttons">
+                <input type="button" value="Clear" onclick="clearForm()">
+                <input type="submit" value="Submit" onclick="handleFormSubmit()">
+            </div>
+
+            <div class="total-cost">
+                <label for="totalCost">Total Price:</label>
+                <span id="totalCost">$0</span>
+            </div>
+        </form>
+        
+        <table id="selectedItemsTable" style="display: none;">
+            <thead>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Item Image</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <script>
+        function clearForm() {
+            document.getElementById("bookingForm").reset();
+        }
+        function handleFormSubmit() {
+         document.getElementById("bookingForm").submit();
+}
+
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const quantities = document.querySelectorAll('input[name^="quantity"]');
+        const totalCost = document.getElementById("totalCost");
+        const tableBody = document.querySelector("#selectedItemsTable tbody");
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener("change", updateSelectedItems);
+        });
+
+        quantities.forEach(quantityInput => {
+            quantityInput.addEventListener("input", calculateTotalCost);
+        });
+
+        function updateSelectedItems() {
+            const checkbox = this;
+            const quantityInput = checkbox.parentElement.querySelector('input[name^="quantity"]');
+            const itemName = checkbox.nextElementSibling.nextElementSibling.textContent;
+            const itemImageSrc = checkbox.previousElementSibling.getAttribute("src");
+            const price = parseInt(itemName.match(/\$\d+/)[0].substring(1));
+            const quantity = parseInt(quantityInput.value);
+            const itemTotalPrice = price * quantity;
+
+            if (checkbox.checked && quantity > 0) {
+                const newRow = document.createElement('tr');
+
+                newRow.innerHTML = `
+                    <td>${itemName}</td>
+                    <td><img src="${itemImageSrc}" alt="${itemName}" width="50" height="50"></td>
+                    <td>$${price}</td>
+                    <td>${quantity}</td>
+                    <td>$${itemTotalPrice}</td>
+                `;
+
+                tableBody.appendChild(newRow);
+            } else {
+                const rows = tableBody.getElementsByTagName('tr');
+
+                for (let i = 0; i < rows.length; i++) {
+                    const row = rows[i];
+                    const nameCell = row.cells[0];
+
+                    if (nameCell.textContent === itemName) {
+                        row.remove();
+                        break;
+                    }
+                }
+            }
+
+            calculateTotalCost();
+        }
+
+        function calculateTotalCost() {
+            let totalPrice = 0;
+
+            quantities.forEach(quantityInput => {
+                const checkbox = quantityInput.parentElement.querySelector('input[type="checkbox"]');
+                const itemName = checkbox.nextElementSibling.nextElementSibling.textContent;
+                const price = parseInt(itemName.match(/\$\d+/)[0].substring(1));
+                const quantity = parseInt(quantityInput.value);
+                const itemTotalPrice = price * quantity;
+
+                totalPrice += itemTotalPrice;
+            });
+
+            totalCost.textContent = "$" + totalPrice;
+        }
+    </script>
+</body>
+</html>
